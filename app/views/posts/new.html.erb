@@ -1,0 +1,5 @@
+<%= form_with(model: @post) do |form| %>
+    <%= form.label(:content, "Write your post:")%>
+    <%= form.text_field(:content) %>
+    <%= form.submit("Post!") %>
+<% end %>

@@ -1,0 +1,26 @@
+<h1>Hello!</h1>
+
+
+<% if user_signed_in? %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= button_to "Sign in",  new_user_session_path, method: :get %>
+<% end %>
+
+<%= button_to "Create a Post", "/posts/new", method: :get %>
+
+<br>
+
+<h1>Posts</h1>
+
+<ul>
+    <% if user_signed_in? %>
+        <% @post.each do |post| %>
+            <li><p><%= post.user.email%>: <%= post.content %></p></li>
+        <% end %>
+    <% else %>
+        <% @post.each do |post| %>
+            <li><p>Anonymous Fox: <%= post.content %></p></li>
+        <% end %>
+    <% end %>
+</ul>
